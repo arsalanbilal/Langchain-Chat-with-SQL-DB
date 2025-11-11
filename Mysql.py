@@ -34,6 +34,9 @@ api_key = st.sidebar.text_input(label = "Groq API Key", type = "password")
 if not db_uri:
   st.info("Please enter the Database information and uri")
 
+if not api_key:
+  st.info("Please add the Groq API key")
+
 # LLM model :-
 llm = ChatGroq(model_name = "OpenAI GPT-OSS 20B", api_key=api_key, streaming=True)
 
@@ -84,6 +87,7 @@ if user_query:
     response = agent.run(user_query, callbacks=[streamlit_callback])
     st.session_state.messages.append({"role" : "assistant", "content" : response})
     st.write(response)
+
 
 
 
