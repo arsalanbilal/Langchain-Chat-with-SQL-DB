@@ -8,6 +8,7 @@ from langchain_classic.agents.agent_toolkits import SQLDatabaseToolkit
 from sqlalchemy import create_engine
 import sqlite3
 import openai
+import os
 from langchain_groq import ChatGroq
 
 
@@ -88,6 +89,7 @@ if user_query:
     response = agent.run(user_query, callbacks=[streamlit_callback])
     st.session_state.messages.append({"role" : "assistant", "content" : response})
     st.write(response)
+
 
 
 
