@@ -6,3 +6,4 @@ mysql-connector-python
 pathlib
 openai
 langchain-classic
+langchain-community
