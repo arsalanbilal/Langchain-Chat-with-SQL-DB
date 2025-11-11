@@ -1,6 +1,7 @@
 streamlit
 langchain
 langchain-groq
+python-dotenv
 sqlalchemy
 mysql-connector-python
 pathlib
