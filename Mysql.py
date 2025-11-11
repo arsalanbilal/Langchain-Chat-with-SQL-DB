@@ -9,8 +9,12 @@ from sqlalchemy import create_engine
 import sqlite3
 import openai
 import os
+from getenv import loadenv
 from langchain_groq import ChatGroq
 
+load_env()
+
+Groq_api_key = os.environ["GROQ_API_KEY"]
 
 st.set_page_config(page_title="Langchain : Chat with SQL DB", page_icon="*")
 st.title("* Langchain : Chat with SQL DB")
@@ -31,7 +35,7 @@ if radio_opt.index(selected_opt)==1:
 else:
   db_uri = LOCALDB
 
-Groq_api_key = st.secrets["GROQ_API_KEY"]
+
 
 if not db_uri:
   st.info("Please enter the Database information and uri")
@@ -86,6 +90,7 @@ if user_query:
     response = agent.run(user_query, callbacks=[streamlit_callback])
     st.session_state.messages.append({"role" : "assistant", "content" : response})
     st.write(response)
+
 
 
 
