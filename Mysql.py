@@ -9,10 +9,10 @@ from sqlalchemy import create_engine
 import sqlite3
 import openai
 import os
-from dotenv import load_env
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 
-load_env()
+load_dotenv()
 
 Groq_api_key = os.environ["GROQ_API_KEY"]
 
@@ -90,6 +90,7 @@ if user_query:
     response = agent.run(user_query, callbacks=[streamlit_callback])
     st.session_state.messages.append({"role" : "assistant", "content" : response})
     st.write(response)
+
 
 
 
