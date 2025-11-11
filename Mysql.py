@@ -31,7 +31,7 @@ if radio_opt.index(selected_opt)==1:
 else:
   db_uri = LOCALDB
 
-Groq_api_key = os.getenv("GROQ_API_KEY")
+Groq_api_key = st.secrets["GROQ_API_KEY"]
 
 if not db_uri:
   st.info("Please enter the Database information and uri")
@@ -86,6 +86,7 @@ if user_query:
     response = agent.run(user_query, callbacks=[streamlit_callback])
     st.session_state.messages.append({"role" : "assistant", "content" : response})
     st.write(response)
+
 
 
 
