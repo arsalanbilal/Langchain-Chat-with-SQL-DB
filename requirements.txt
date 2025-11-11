@@ -5,3 +5,4 @@ sqlalchemy
 mysql-connector-python
 pathlib
 openai
+langchain-classic
