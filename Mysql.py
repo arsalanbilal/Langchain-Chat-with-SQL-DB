@@ -14,7 +14,7 @@ from langchain_groq import ChatGroq
 
 load_dotenv()
 
-os.environ["GROQ_API_KEY"] = os.getenv['GROQ_API_KEY']
+os.environ["GROQ_API_KEY"] = os.getenv["GROQ_API_KEY"]
 
 st.set_page_config(page_title="Langchain : Chat with SQL DB", page_icon="*")
 st.title("* Langchain : Chat with SQL DB")
@@ -90,6 +90,7 @@ if user_query:
     response = agent.run(user_query, callbacks=[streamlit_callback])
     st.session_state.messages.append({"role" : "assistant", "content" : response})
     st.write(response)
+
 
 
 
