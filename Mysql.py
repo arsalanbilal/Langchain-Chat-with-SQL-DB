@@ -31,16 +31,13 @@ if radio_opt.index(selected_opt)==1:
 else:
   db_uri = LOCALDB
 
-api_key = os.getenv("GROQ_API_KEY")
+Groq_api_key = os.getenv("GROQ_API_KEY")
 
 if not db_uri:
   st.info("Please enter the Database information and uri")
 
-if not api_key:
-  st.info("Please add the Groq API key")
-
 # LLM model :-
-llm = ChatGroq(model_name = "mixtral-8x7b", api_key=api_key, streaming=True)
+llm = ChatGroq(model_name = "mixtral-8x7b", api_key=Groq_api_key, streaming=True)
 
 @st.cache_resource(ttl="2h")
 def configure_db(db_uri, mysql_host=None, mysql_user=None, mysql_password=None, mysql_db=None):
@@ -89,6 +86,7 @@ if user_query:
     response = agent.run(user_query, callbacks=[streamlit_callback])
     st.session_state.messages.append({"role" : "assistant", "content" : response})
     st.write(response)
+
 
 
 
